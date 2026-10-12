@@ -33,7 +33,9 @@ ARG UID
 ARG GID
 
 # Set Node.js options (heap limit Allocation failed - JavaScript heap out of memory)
-# ENV NODE_OPTIONS="--max-old-space-size=4096"
+# local (scchow fork): raise to 8192 — the frontend bundle at f8ae8a6c3 exceeds the
+# 4096 default (the build OOMs at ~4GB); uncommented 4096 was insufficient.
+ENV NODE_OPTIONS="--max-old-space-size=8192"
 
 WORKDIR /app
 
